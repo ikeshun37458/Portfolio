@@ -1,6 +1,7 @@
-import glob
 import os
 import re
+import glob
+from io import BytesIO
 import chardet
 import pandas as pd
 import requests
@@ -25,7 +26,7 @@ if "df2" not in st.session_state:
 url = "https://github.com/ikeshun37458/Portfolio/blob/main/app/demo/Zaim.20241209210307.csv"
 response = requests.get(url)
 
-df_org = pd.read_csv(response.content)
+df_org = pd.read_csv(BytesIO(response.content))
 
 if df_org:
     st.success("データがアップロードされました！")
