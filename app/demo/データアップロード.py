@@ -59,11 +59,10 @@ for date in date_list:
 st.session_state.df1 = df_all_cate
 
 # 予測データのDataFrameを作成→保持
-file_path = "df_all_pred.csv"
-with open(file_path, "rb") as f:
-    result = chardet.detect(f.read())
-    encoding = result["encoding"]
-df_all_pred = pd.read_csv(file_path, encoding=encoding)
+url = "https://raw.githubusercontent.com/ikeshun37458/Portfolio/main/app/demo/df_all_pred.csv"
+response = requests.get(url)
+
+df_all_pred = pd.read_csv(StringIO(response.text))
 
 st.session_state.df2 = df_all_pred
     
