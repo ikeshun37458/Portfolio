@@ -27,7 +27,7 @@ if "df2" not in st.session_state:
 url = "https://github.com/ikeshun37458/Portfolio/blob/92a400f909b3b108e66a4d0d0776b57114db33b8/app/demo/Zaim.20241209210307.csv"
 response = requests.get(url)
 
-st.write(response.text[:1000])
+st.write(response.text[:100000])
 
 # df_org = pd.read_csv(StringIO(response.text), encoding='utf-8')
 
