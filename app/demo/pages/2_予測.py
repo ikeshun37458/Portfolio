@@ -58,4 +58,5 @@ else:
             plt.xlabel("支出の月別推移", fontsize=10)
             plt.ylabel("支出", rotation=0, fontsize=10, labelpad=15)
             plt.tight_layout()
+            plt.style.use("dark_background")
             st.pyplot(plt)
