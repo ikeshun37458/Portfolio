@@ -1,0 +1,9 @@
+os
+re
+time
+glob
+pandas
+chardet
+streamlit
+matplotlib
+japanize_matplotlib
