@@ -1,5 +1,6 @@
 pandas
 chardet
+requests
 streamlit
 matplotlib
 japanize_matplotlib
