@@ -37,4 +37,4 @@ Zaim(家計簿アプリ)からエクスポートしたデータをアップロ�
 <img width="1443" alt="image" src="https://github.com/user-attachments/assets/7ceedc41-dac4-4106-9763-9044d916ef02" />
 
 直近一年の推移と来月の予測が表示される
-
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/f100c69b-f927-4889-b043-6acc5ba0c377" />
