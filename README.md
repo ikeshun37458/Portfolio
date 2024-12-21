@@ -31,3 +31,10 @@ Zaim(家計簿アプリ)からエクスポートしたデータをアップロ�
 <img width="1443" alt="image" src="https://github.com/user-attachments/assets/a7a54d02-9462-43c0-9271-7d0e123f1ec4" />
 
 年月を選択後、詳細が表示される
+<img width="1441" alt="image" src="https://github.com/user-attachments/assets/d444764a-ecc5-4707-9c93-ade76e770542" />
+
+来月の支出を予測したいカテゴリを選択
+<img width="1443" alt="image" src="https://github.com/user-attachments/assets/7ceedc41-dac4-4106-9763-9044d916ef02" />
+
+直近一年の推移と来月の予測が表示される
+
