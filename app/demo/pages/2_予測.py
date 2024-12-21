@@ -55,7 +55,7 @@ else:
             )
             
             plt.xticks(rotation=45, fontsize=10)
-            plt.xlabel("支出の月別推移")
+            plt.xlabel("支出の月別推移", fontsize=10)
             plt.ylabel("支出", rotation=0, fontsize=10, labelpad=15)
             plt.tight_layout()
             st.pyplot(plt)
