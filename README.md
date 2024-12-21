@@ -4,10 +4,17 @@
 
 ## 主な機能
 
-
+・家計簿データのアップロードと分析
+・毎月の支出をカテゴリ別に可視化
+・カテゴリ別で直近12ヶ月のデータから来月の支出を予測
 
 ## 使用技術
 
-## デモ
+・フロントエンド： Streamlit
+・バックエンド： FastAPI
+・機械学習モデル： TensorFlow
+・その他： Pandas, Matplotlib
 
-デモサイトはこちら
+## デモサイトはこちら
+
+https://portfolio-jg9v9x5dau7xwl6gvbqm5p.streamlit.app/
