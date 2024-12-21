@@ -26,7 +26,7 @@ if "df2" not in st.session_state:
 url = "https://github.com/ikeshun37458/Portfolio/blob/main/app/demo/Zaim.20241209210307.csv"
 response = requests.get(url)
 
-df_org = pd.read_csv(StringIO(response.text))
+df_org = pd.read_csv(StringIO(response.text), encoding='utf-8')
 
 if df_org:
     st.success("データがアップロードされました！")
