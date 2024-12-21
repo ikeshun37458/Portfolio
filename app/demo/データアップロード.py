@@ -3,6 +3,7 @@ import os
 import re
 import chardet
 import pandas as pd
+import requests
 import streamlit as st
 
 st.title("家計簿")
@@ -12,13 +13,17 @@ if "df1" not in st.session_state:
 if "df2" not in st.session_state:
     st.session_state.df2 = None 
 
-files = glob.glob(f"Zaim*.csv")
-for file_path in files:
-    # エンコーディングを確認
-    with open(file_path, "rb") as f:
-        result = chardet.detect(f.read())
-        encoding = result["encoding"]
-    df_org = pd.read_csv(file_path, encoding=encoding)
+# files = glob.glob(f"Zaim*.csv")
+# response = requests.get(url)
+# for file_path in files:
+#     # エンコーディングを確認
+#     with open(file_path, "rb") as f:
+#         result = chardet.detect(f.read())
+#         encoding = result["encoding"]
+#     df_org = pd.read_csv(file_path, encoding=encoding)
+
+url = ""
+response = requests.get(url)
 
 if df_org:
     st.success("データがアップロードされました！")
