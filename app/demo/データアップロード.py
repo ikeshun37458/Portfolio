@@ -20,7 +20,8 @@ for file_path in files:
         encoding = result["encoding"]
     df_org = pd.read_csv(file_path, encoding=encoding)
 
-st.success("データがアップロードされました！")
+if df_org:
+    st.success("データがアップロードされました！")
 
 df_org["日付"] = df_org["日付"].apply(lambda x: x[:7])
 df_org[["year", "month"]] = df_org["日付"].str.split("-", expand=True)
