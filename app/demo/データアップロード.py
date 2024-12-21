@@ -23,7 +23,8 @@ if "df2" not in st.session_state:
 #         encoding = result["encoding"]
 #     df_org = pd.read_csv(file_path, encoding=encoding)
 
-url = "https://github.com/ikeshun37458/Portfolio/blob/main/app/demo/Zaim.20241209210307.csv"
+# url = "https://github.com/ikeshun37458/Portfolio/blob/main/app/demo/Zaim.20241209210307.csv"
+url = "https://github.com/ikeshun37458/Portfolio/blob/92a400f909b3b108e66a4d0d0776b57114db33b8/app/demo/Zaim.20241209210307.csv"
 response = requests.get(url)
 
 st.write(response.text[:1000])
