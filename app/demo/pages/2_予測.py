@@ -32,25 +32,29 @@ else:
         expen_pred = expen_cate[-1]
         
         model_status = st.empty()
-        model_status.write("モデルを学習中...")
-        time.sleep(3)
-        model_status.write(f"予測された来月の支出額：¥{expen_pred:,.0f}")
-
-        plt.plot(
-            date[:-1],
-            expen_cate[:-1],
-            marker=".",
-            color="b"
-        )
-        plt.plot(
-            date[-2:],
-            expen_cate[-2:],
-            marker=".",
-            linestyle="--",
-            color="r"
-        )
         
-        plt.xticks(rotation=45, fontsize=10)
-        plt.ylabel("支出", rotation=0, fontsize=10, labelpad=15)
-        plt.tight_layout()
-        st.pyplot(plt)
+        if len(date) < 13:
+            model_status.write("データ数が十分にありません。他のカテゴリを選択してください！")
+        else:
+            model_status.write("モデルを学習中...")
+            time.sleep(3)
+            model_status.write(f"予測された来月の支出額：¥{expen_pred:,.0f}")
+    
+            plt.plot(
+                date[:-1],
+                expen_cate[:-1],
+                marker=".",
+                color="b"
+            )
+            plt.plot(
+                date[-2:],
+                expen_cate[-2:],
+                marker=".",
+                linestyle="--",
+                color="r"
+            )
+            
+            plt.xticks(rotation=45, fontsize=10)
+            plt.ylabel("支出", rotation=0, fontsize=10, labelpad=15)
+            plt.tight_layout()
+            st.pyplot(plt)
