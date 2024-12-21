@@ -51,7 +51,7 @@ else:
                 expen_cate[-2:],
                 marker=".",
                 linestyle="--",
-                color="r"
+                color="yellow"
             )
             
             plt.xticks(rotation=45, fontsize=10)
