@@ -44,7 +44,7 @@ else:
                 date[:-1],
                 expen_cate[:-1],
                 marker=".",
-                color="teal"
+                color="lightseagreen"
             )
             plt.plot(
                 date[-2:],
