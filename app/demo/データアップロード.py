@@ -19,7 +19,7 @@ response = requests.get(url)
 
 df_org = pd.read_csv(StringIO(response.text))
 
-if df_org:
+if df_org is not None:
     st.success("データがアップロードされました！")
 
 df_org["日付"] = df_org["日付"].apply(lambda x: x[:7])
