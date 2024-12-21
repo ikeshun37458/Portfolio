@@ -36,7 +36,7 @@ else:
         if response.status_code == 200:
             model_status.empty()
             prediction = response.json()["prediction"]
-            st.write(f"予測された来月の支出額: ¥{prediction:,.0f}")
+            st.write(f"予測された来月の支出額：¥{prediction:,.0f}")
 
             # 直近1年の年月リストを取得
             date = data["year-month"].tolist()
@@ -70,4 +70,4 @@ else:
             plt.tight_layout()
             st.pyplot(plt)
         else:
-            st.write("エラーが発生しました。")
+            st.write("データ数が十分にありません。他のカテゴリを選択してください！")
