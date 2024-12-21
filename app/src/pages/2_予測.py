@@ -52,23 +52,26 @@ else:
             next_month = f"{year}-{month:02d}"
 
             plt.plot(
-                date,
-                expen_cate,
+                date[:-1],
+                expen_cate[:-1],
                 marker=".",
-                color="b"
+                color="lightseagreen",
+                linewidth=2
             )
             plt.plot(
-                [date[-1], next_month],
-                [expen_cate[-1], prediction],
+                date[-2:],
+                expen_cate[-2:],
                 marker=".",
                 linestyle="--",
-                color="r"
+                color="yellow",
+                linewidth=2
             )
             
             plt.xticks(rotation=45, fontsize=10)
             plt.xlabel("支出の月別推移", fontsize=10)
             plt.ylabel("支出", rotation=0, fontsize=10, labelpad=15)
             plt.tight_layout()
+            plt.style.use("dark_background")
             st.pyplot(plt)
         else:
             model_status.empty()
