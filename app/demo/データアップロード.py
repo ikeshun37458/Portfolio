@@ -14,22 +14,10 @@ if "df1" not in st.session_state:
 if "df2" not in st.session_state:
     st.session_state.df2 = None 
 
-# files = glob.glob(f"Zaim*.csv")
-# response = requests.get(url)
-# for file_path in files:
-#     # エンコーディングを確認
-#     with open(file_path, "rb") as f:
-#         result = chardet.detect(f.read())
-#         encoding = result["encoding"]
-#     df_org = pd.read_csv(file_path, encoding=encoding)
-
-# url = "https://github.com/ikeshun37458/Portfolio/blob/main/app/demo/Zaim.20241209210307.csv"
-url = "https://github.com/ikeshun37458/Portfolio/blob/92a400f909b3b108e66a4d0d0776b57114db33b8/app/demo/Zaim.20241209210307.csv"
+url = "https://raw.githubusercontent.com/ikeshun37458/Portfolio/main/app/demo/Zaim.20241209210307.csv"
 response = requests.get(url)
 
-st.write(response.text[:100000])
-
-# df_org = pd.read_csv(StringIO(response.text), encoding='utf-8')
+df_org = pd.read_csv(StringIO(response.text))
 
 if df_org:
     st.success("データがアップロードされました！")
