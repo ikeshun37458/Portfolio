@@ -52,15 +52,15 @@ else:
             next_month = f"{year}-{month:02d}"
 
             plt.plot(
-                date[:-1],
-                expen_cate[:-1],
+                date,
+                expen_cate,
                 marker=".",
                 color="lightseagreen",
                 linewidth=2
             )
             plt.plot(
-                date[-2:],
-                expen_cate[-2:],
+                [date[-1], next_month],
+                [expen_cate[-1], prediction],
                 marker=".",
                 linestyle="--",
                 color="yellow",
