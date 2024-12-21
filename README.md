@@ -19,7 +19,7 @@
 
 https://portfolio-jg9v9x5dau7xwl6gvbqm5p.streamlit.app/
 
-##画面サンプル
+## 画面サンプル
 
 Zaim(家計簿アプリ)からエクスポートしたデータをアップロード
 <img width="1444" alt="image" src="https://github.com/user-attachments/assets/394da47c-b745-4916-9dab-fb7e0eeba300" />
