@@ -19,4 +19,15 @@
 
 https://portfolio-jg9v9x5dau7xwl6gvbqm5p.streamlit.app/
 
+##画面サンプル
+
+Zaim(家計簿アプリ)からエクスポートしたデータをアップロード
 <img width="1444" alt="image" src="https://github.com/user-attachments/assets/394da47c-b745-4916-9dab-fb7e0eeba300" />
+
+アップロードに成功したことを確認し、実績または予測へ進む
+<img width="1446" alt="image" src="https://github.com/user-attachments/assets/131832ef-0964-4734-85d2-ac8fb923f9f2" />
+
+実績を確認したい年月を選択
+<img width="1443" alt="image" src="https://github.com/user-attachments/assets/a7a54d02-9462-43c0-9271-7d0e123f1ec4" />
+
+年月を選択後、詳細が表示される
