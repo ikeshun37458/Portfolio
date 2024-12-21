@@ -35,7 +35,7 @@ else:
             counterclock=False
         )
         plt.legend(labels=df_month["category"], loc="upper right", fontsize=8.5, frameon=False, bbox_to_anchor=(1.1, 1))
-        plt.text(0, 0, f"¥{month_sum:,}", ha="center", va="center", fontsize=20, fontweight="bold", color="white")
+        plt.text(0, 0, f"支出総額\n¥{month_sum:,}", ha="center", va="center", fontsize=20, fontweight="bold", color="white")
         plt.style.use("dark_background")
         
         
