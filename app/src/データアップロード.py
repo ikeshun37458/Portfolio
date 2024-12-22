@@ -6,7 +6,7 @@ st.title("家計簿")
 uploader = st.empty()
 uploaded_file = uploader.file_uploader("Zaimの入力データをアップロードしてください。", type=["csv"])
 
-
+# 初期化
 if "df1" not in st.session_state:
     st.session_state.df1 = None 
 if "df2" not in st.session_state:
@@ -16,7 +16,6 @@ if uploaded_file:
     uploader.empty()
 
     df_org = pd.read_csv(uploaded_file, encoding="utf-8")
-
     st.success("データがアップロードされました！")
 
     df_org["日付"] = df_org["日付"].apply(lambda x: x[:7])
