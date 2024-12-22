@@ -6,12 +6,11 @@ import streamlit as st
 
 st.title("予測")
 
+# 初期化
+if "df1" not in st.session_state:
+    st.session_state.df1 = None
 
-
-if "df2" not in st.session_state:
-    st.session_state.df2 = None
-
-if st.session_state.df2 is None:
+if st.session_state.df1 is None:
     st.write("データがアップロードされていません。データアップロードに戻りアップロードしてください！")
 else:
     df_all_cate = st.session_state.df1
