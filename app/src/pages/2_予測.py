@@ -14,6 +14,8 @@ if st.session_state.df1 is None:
     st.write("データがアップロードされていません。データアップロードに戻りアップロードしてください！")
 else:
     df_all_cate = st.session_state.df1
+
+    # 対象カテゴリを選択
     cate_list = df_all_cate["category"].unique()
     target_cate = st.selectbox(
         "どのカテゴリを確認しますか？",
@@ -22,8 +24,8 @@ else:
         placeholder="選択してください"
     )
 
+    
     if target_cate != None:
-        # データ準備
         data = df_all_cate[df_all_cate["category"].str.contains(target_cate)].iloc[-12:].copy()
         expen_cate = data["expen_cate"].tolist()
 
@@ -31,7 +33,8 @@ else:
         model_status.write("モデルを学習中...")
         # サーバーにデータを送信
         response = requests.post("http://127.0.0.1:8000/train/", json={"data": expen_cate, "step": 3})
-    
+
+        # サーバーからデータを受け取り、結果を表示
         if response.status_code == 200:
             model_status.empty()
             prediction = response.json()["prediction"]
@@ -50,6 +53,7 @@ else:
                 month += 1
             next_month = f"{year}-{month:02d}"
 
+            # 直近1年の推移と来月の支出額を折れ線グラフで可視化
             plt.plot(
                 date,
                 expen_cate,
