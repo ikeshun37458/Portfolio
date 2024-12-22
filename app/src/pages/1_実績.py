@@ -23,6 +23,7 @@ else:
         placeholder="選択してください"
     )
 
+    # 対象月の円グラフとDataFrameを作成
     if target_month != None:
         df_month = df_all_cate[df_all_cate["year-month"] == target_month]
         
@@ -40,8 +41,8 @@ else:
         plt.text(0, 0, f"支出総額\n¥{month_sum:,}", ha="center", va="center", fontsize=20, fontweight="bold", color="white")
         plt.style.use("dark_background")
         
-        
-        col1, col2 = st.columns([2, 1])
+        # 円グラフとDataFrameの比率を指定して表示
+        col1, col2 = st.columns([7, 3])
         
         with col1:
             st.pyplot(plt)
