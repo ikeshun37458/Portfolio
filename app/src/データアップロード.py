@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-st.title("家計簿")
+st.title("家計簿ああ")
 
 uploader = st.empty()
 uploaded_file = uploader.file_uploader("Zaimの入力データをアップロードしてください。", type=["csv"])
