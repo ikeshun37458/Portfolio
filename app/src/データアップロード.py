@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 
-# タイトル
 st.title("家計簿")
 
 uploader = st.empty()
@@ -36,7 +35,7 @@ if uploaded_file:
     # 年月のリスト
     date_list = df_org["year-month"].unique()
 
-    # 大カテゴリのDataFrameを作成→保持
+    # カテゴリ別に集計したのDataFrameを作成→保持
     df_all_cate = pd.DataFrame()
     for date in date_list:
         df_filtered = df_org[df_org["year-month"] == date]
