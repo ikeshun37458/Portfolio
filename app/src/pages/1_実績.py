@@ -5,6 +5,7 @@ import streamlit as st
 
 st.title("実績")
 
+# 初期化
 if "df1" not in st.session_state:
     st.session_state.df1 = None 
 
@@ -12,7 +13,8 @@ if st.session_state.df1 is None:
     st.write("データがアップロードされていません。データアップロードに戻りアップロードしてください！")
 else:
     df_all_cate = st.session_state.df1
-    
+
+    # 対象月を選択
     date_list = df_all_cate["year-month"].unique()
     target_month = st.selectbox(
         "何月の実績を確認しますか？",
