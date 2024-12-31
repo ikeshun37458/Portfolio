@@ -16,6 +16,15 @@ class Train(BaseModel):
     data: list
     step: int
 
+# 時系列データ作成
+def sequences(data, step):
+    X, Y = [], []
+    for i in range(len(data) - step):
+        X_seq, Y_seq = data[i:i+step], data[i+step]
+        X.append(X_seq)
+        Y.append(Y_seq)
+    return np.array(X), np.array(Y)
+
 
 @app.post("/train/")
 # 非同期関数として定義
@@ -27,15 +36,6 @@ async def train_model(request: Train):
     # 正規化
     scaler = MinMaxScaler(feature_range=(0, 1))
     scaled_data = scaler.fit_transform(data)
-
-    # 時系列データ作成
-    def sequences(data, step):
-        X, Y = [], []
-        for i in range(len(data) - step):
-            X_seq, Y_seq = data[i:i+step], data[i+step]
-            X.append(X_seq)
-            Y.append(Y_seq)
-        return np.array(X), np.array(Y)
 
     # 説明変数と目的変数に代入
     X, Y = sequences(scaled_data, step)
