@@ -16,7 +16,7 @@ class Train(BaseModel):
     data: list
     step: int
 
-# 時系列データ作成
+# 時系列データを作成する関数を定義
 def sequences(data, step):
     X, Y = [], []
     for i in range(len(data) - step):
