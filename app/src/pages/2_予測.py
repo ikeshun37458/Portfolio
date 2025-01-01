@@ -6,6 +6,9 @@ import streamlit as st
 
 st.title("予測")
 
+season_cate = ["水道・光熱"]
+event_cate = ["交通費", "エンタメ", "交際費"]
+
 # 初期化
 if "df1" not in st.session_state:
     st.session_state.df1 = None
@@ -28,11 +31,19 @@ else:
     if target_cate != None:
         data = df_all_cate[df_all_cate["category"].str.contains(target_cate)].iloc[-12:].copy()
         expen_cate = data["expen_cate"].tolist()
+        
+        # フラグを追加
+        if target_cate in season_cate:
+            flag = data["season"].to_list()
+        elif target_cate in event_cate:
+            flag = data["event"].to_list()
+        else:
+            flag = [0] * len(expen_cate)
 
         model_status = st.empty()
         model_status.write("モデルを学習中...")
         # サーバーにデータを送信
-        response = requests.post("http://127.0.0.1:8000/train/", json={"data": expen_cate, "step": 3})
+        response = requests.post("http://127.0.0.1:8000/train/", json={"expen": expen_cate, "flag": flag})
 
         # サーバーからデータを受け取り、結果を表示
         if response.status_code == 200:
