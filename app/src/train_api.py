@@ -13,8 +13,8 @@ MODEL_PATH = "model.h5"
 
 # データの型を定義
 class Train(BaseModel):
-    data: list
-    step: int
+    expen: list
+    flag: list
 
 # 時系列データを作成する関数を定義
 def sequences(data, step):
@@ -30,14 +30,16 @@ def sequences(data, step):
 # 非同期関数として定義
 async def train_model(request: Train):
     
-    data = np.array(request.data).reshape(-1, 1)
-    step = request.step
+    expen = np.array(request.expen).reshape(-1, 1)
+    flag = np.array(request.flag).reshape(-1, 1)
 
     # 正規化
     scaler = MinMaxScaler(feature_range=(0, 1))
-    scaled_data = scaler.fit_transform(data)
+    scaled_data = scaler.fit_transform(expen)
+    scaled_data = np.hstack((scaled_data, flag))
 
     # 説明変数と目的変数に代入
+    step = 3
     X, Y = sequences(scaled_data, step)
     
     # モデルが存在するか確認しない場合は作成する
@@ -46,8 +48,10 @@ async def train_model(request: Train):
     else:
         # モデルが存在しない場合、新しく作成
         model = tf.keras.Sequential()
-        model.add(tf.keras.layers.LSTM(50, activation="relu", input_shape=(X.shape[1], X.shape[2]), return_sequences=True))
+        model.add(tf.keras.layers.LSTM(50, activation="relu", input_shape=(3, 2), return_sequences=True))
+        model.add(tf.keras.layers.Dropout(0.25))
         model.add(tf.keras.layers.LSTM(100, activation="relu", return_sequences=False))
+        model.add(tf.keras.layers.Dropout(0.5))
         model.add(tf.keras.layers.Dense(1, activation="linear"))
         
         model.compile(optimizer="adam", loss="mean_squared_error")
@@ -59,7 +63,7 @@ async def train_model(request: Train):
     model.save(MODEL_PATH)
 
     # 予測
-    X_test = scaled_data[-step:].reshape(1, step, 1)
+    X_test = scaled_data[-step:].reshape(1, step, 2)
     Y_pred = model.predict(X_test)
     Y_pred_ = scaler.inverse_transform(Y_pred)
 
