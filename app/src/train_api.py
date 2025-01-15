@@ -70,5 +70,4 @@ async def train_model(request: Train):
     # jsonが「numpy.float32」に対応していないためfloatに変換
     prediction = float(Y_pred_[0][0])
 
-    # return {"prediction": Y_pred_[0][0]}
     return {"prediction": prediction}
