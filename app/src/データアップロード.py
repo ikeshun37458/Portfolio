@@ -6,6 +6,14 @@ st.title("家計簿")
 uploader = st.empty()
 uploaded_file = uploader.file_uploader("Zaimの入力データをアップロードしてください。", type=["csv"])
 
+# フラグ
+# 夏と冬
+season_list = ["06", "07", "08", "12", "01", "02"]
+season_cate = ["水道・光熱"]
+# イベント月(年末年始、GW、お盆)
+event_list = ["01", "05", "08", "12"]
+event_cate = ["交通費", "エンタメ", "交際費"]
+
 # 初期化
 if "df1" not in st.session_state:
     st.session_state.df1 = None 
@@ -18,6 +26,7 @@ if uploaded_file:
 
     # データの前処理
     df_org["日付"] = df_org["日付"].apply(lambda x: x[:7])
+    df_org[["year", "month"]] = df_org["日付"].str.split("-", expand=True)
     df_org = df_org.rename(columns={
         "日付": "year-month",
         "カテゴリ": "category",
@@ -26,6 +35,8 @@ if uploaded_file:
     })
     df_org = df_org[[
         "year-month",
+        "year",
+        "month",
         "category",
         "sub_category",
         "expenses"
@@ -47,6 +58,10 @@ if uploaded_file:
         df_total_cate = df_total_cate.sort_values(by=["category"])
         df_total_cate = df_total_cate.drop(["expenses", "sub_category"], axis=1)
         df_all_cate = pd.concat([df_all_cate, df_total_cate], ignore_index=True)
+
+    # フラグを追加
+    df_all_cate["season"] = df_all_cate["month"].isin(season_list).astype(int)
+    df_all_cate["event"] = df_all_cate["month"].isin(event_list).astype(int)
     
     st.session_state.df1 = df_all_cate
     
